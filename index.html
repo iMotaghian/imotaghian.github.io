@@ -6,29 +6,63 @@
     <title>Mehrdad Motaghian - Django Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Light Mode Colors */
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --container-bg: #ffffff;
+            --primary-color: #007bff;
+            --border-color: #eee;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --button-bg: #28a745;
+            --button-hover-bg: #218838;
+            --toggle-bg: #ccc;
+            --toggle-handle-bg: #fff;
+            --toggle-handle-shadow: rgba(0, 0, 0, 0.2);
+            --toggle-icon-color: #333;
+        }
+
+        [data-theme='dark'] {
+            /* Dark Mode Colors */
+            --bg-color: #2c2c2c;
+            --text-color: #e0e0e0;
+            --container-bg: #3a3a3a;
+            --primary-color: #69b3ff; /* Lighter blue for dark mode */
+            --border-color: #555;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --button-bg: #218838;
+            --button-hover-bg: #1e7030;
+            --toggle-bg: #555;
+            --toggle-handle-bg: #e0e0e0;
+            --toggle-handle-shadow: rgba(255, 255, 255, 0.2);
+            --toggle-icon-color: #e0e0e0;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
-            background-color: #f4f7f6;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .container {
-            background-color: #ffffff;
+            background-color: var(--container-bg);
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px var(--shadow-color);
             padding: 40px;
             max-width: 900px;
             width: 100%;
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .sidebar {
             flex: 1;
@@ -39,7 +73,8 @@
             align-items: center;
             text-align: center;
             padding-right: 20px;
-            border-right: 1px solid #eee;
+            border-right: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
         }
         .main-content {
             flex: 3;
@@ -50,13 +85,15 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #007bff;
+            border: 4px solid var(--primary-color);
             margin-bottom: 20px;
+            transition: border-color 0.3s ease;
         }
         h1, h2 {
-            color: #007bff;
+            color: var(--primary-color);
             margin-top: 0;
             font-weight: 700;
+            transition: color 0.3s ease;
         }
         h1 {
             font-size: 2.2em;
@@ -65,15 +102,17 @@
         h2 {
             font-size: 1.6em;
             margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 5px;
             text-align: left;
+            transition: border-color 0.3s ease;
         }
         .contact-info a {
-            color: #007bff;
+            color: var(--primary-color);
             text-decoration: none;
             margin-bottom: 10px;
             display: block;
+            transition: color 0.3s ease;
         }
         .contact-info a:hover {
             text-decoration: underline;
@@ -81,12 +120,13 @@
         .download-cv {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--border-color);
             text-align: center;
+            transition: border-color 0.3s ease;
         }
         .download-cv a {
             display: inline-block;
-            background-color: #28a745;
+            background-color: var(--button-bg);
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -95,7 +135,7 @@
             transition: background-color 0.3s ease;
         }
         .download-cv a:hover {
-            background-color: #218838;
+            background-color: var(--button-hover-bg);
         }
         ul {
             list-style: none;
@@ -108,14 +148,81 @@
         }
         ul li::before {
             content: '•';
-            color: #007bff;
+            color: var(--primary-color);
             position: absolute;
             left: 0;
             top: 0;
+            transition: color 0.3s ease;
         }
         p {
             margin-bottom: 1em;
         }
+
+        /* Dark Mode Toggle Switch */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+            justify-content: center;
+            width: 100%; /* Ensure it spans the sidebar */
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 48px;
+        }
+        .theme-switch input {
+            display: none;
+        }
+        .slider {
+            background-color: var(--toggle-bg);
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            background-color: var(--toggle-handle-bg);
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 4px;
+            position: absolute;
+            width: 16px;
+            transition: .4s;
+            border-radius: 50%;
+            box-shadow: 0 0 2px var(--toggle-handle-shadow);
+        }
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        /* Icons for sun/moon */
+        .slider.round {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+        }
+        .slider.round i {
+            color: var(--toggle-icon-color);
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        /* Hide moon icon in light mode, sun icon in dark mode */
+        .slider.round .moon-icon { display: block; }
+        .slider.round .sun-icon { display: none; }
+        input:checked + .slider.round .moon-icon { display: none; }
+        input:checked + .slider.round .sun-icon { display: block; }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -123,7 +230,7 @@
             }
             .sidebar {
                 border-right: none;
-                border-bottom: 1px solid #eee;
+                border-bottom: 1px solid var(--border-color);
                 padding-right: 0;
                 padding-bottom: 20px;
                 max-width: 100%;
@@ -131,15 +238,32 @@
             .main-content {
                 min-width: unset;
             }
+            .theme-switch-wrapper {
+                justify-content: flex-start; /* Align left in mobile */
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
             <img src="http://imehrdad.ir/m/103751835.jpg" alt="Mehrdad Motaghian" class="profile-img">
             <h1>Mehrdad Motaghian</h1>
+            <p>متولد 1990</p>
+            <p>محل زندگی تهران، ایران</p>
             <p>Django Developer</p>
+
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </div>
+                </label>
+                <span>Dark Mode</span>
+            </div>
 
             <div class="contact-info">
                 <a href="https://www.github.com/iMotaghian" target="_blank">GitHub: iMotaghian</a>
@@ -183,5 +307,29 @@
             <p>I am a proactive and enthusiastic developer who values collaboration and continuous improvement. My strong problem-solving skills, combined with a meticulous approach to coding, allow me to tackle complex technical challenges effectively. I'm always looking for ways to optimize processes, enhance performance, and contribute to a positive and productive development environment.</p>
         </div>
     </div>
+
+    <script>
+        const checkbox = document.getElementById('checkbox');
+        const html = document.documentElement; // Get the <html> element
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            html.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                checkbox.checked = true;
+            }
+        }
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
 </body>
 </html>

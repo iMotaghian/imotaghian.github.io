@@ -19,6 +19,8 @@
             --toggle-handle-bg: #fff;
             --toggle-handle-shadow: rgba(0, 0, 0, 0.2);
             --toggle-icon-color: #333;
+            --header-bg: #24292e; /* Dark header for light mode */
+            --header-text: #ffffff; /* White text for header */
         }
 
         [data-theme='dark'] {
@@ -35,30 +37,60 @@
             --toggle-handle-bg: #e1e4e8;
             --toggle-handle-shadow: rgba(255, 255, 255, 0.2);
             --toggle-icon-color: #e1e4e8;
+            --header-bg: #1c2128; /* Even darker header for dark mode */
+            --header-text: #e1e4e8;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            /* Adjust padding-top to make space for the fixed header */
+            padding: 0; 
             background-color: var(--bg-color);
             color: var(--text-color);
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
+            flex-direction: column; /* Changed to column to stack header and main content */
+            align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
             transition: background-color 0.3s ease, color 0.3s ease;
-            position: relative; /* Needed for absolute positioning of toggle */
+            position: relative;
         }
+        
+        /* New Header (Taskbar) Styling */
+        .header {
+            width: 100%;
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 1000; /* Ensure it's above other content */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--header-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
         .container {
             background-color: var(--container-bg);
-            border-radius: 6px; /* Slightly less rounded, more GitHub style */
-            box-shadow: 0 3px 10px var(--shadow-color); /* Adjusted shadow */
+            border-radius: 6px;
+            box-shadow: 0 3px 10px var(--shadow-color);
             padding: 40px;
             max-width: 900px;
-            width: 100%;
+            width: calc(100% - 40px); /* Adjust width to account for body padding */
+            margin-top: 20px; /* Space below header */
+            margin-bottom: 20px; /* Space at bottom */
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
@@ -129,7 +161,7 @@
             background-color: var(--button-bg);
             color: white;
             padding: 10px 20px;
-            border-radius: 6px; /* Slightly less rounded */
+            border-radius: 6px;
             text-decoration: none;
             margin: 5px;
             transition: background-color 0.3s ease;
@@ -160,9 +192,7 @@
 
         /* Dark Mode Toggle Switch */
         .theme-toggle-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            /* Position relative to its parent flex item (header) */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -238,29 +268,34 @@
             .main-content {
                 min-width: unset;
             }
-            .theme-toggle-container {
-                position: static; /* Position normally in mobile */
-                margin-bottom: 20px;
-                justify-content: center; /* Center in mobile */
+            .header {
+                flex-direction: column;
+                padding: 10px;
             }
-            body {
-                padding-top: 0; /* Remove top padding if toggle is static */
+            .header .logo {
+                margin-bottom: 10px;
+            }
+            .theme-toggle-container {
+                margin-bottom: 0; /* Remove extra margin */
             }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="theme-toggle-container">
-        <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round">
-                <i class="fas fa-sun sun-icon"></i>
-                <i class="fas fa-moon moon-icon"></i>
-            </div>
-        </label>
-        
-    </div>
+    <header class="header">
+        <a href="#" class="logo"></a>
+        <div class="theme-toggle-container">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </div>
+            </label>
+            <span></span>
+        </div>
+    </header>
 
     <div class="container">
         <div class="sidebar">
@@ -294,7 +329,7 @@
                 <li><strong>Web Frameworks</strong>:
                     <ul>
                         <li><strong>Django</strong>: My core expertise lies in building comprehensive web applications.</li>
-                        <li><strong>Django Rest Framework (DRF)**: I excel in designing and implementing **RESTful APIs**, ensuring they are efficient, secure, and well-structured for seamless integration with frontend applications.</li>
+                        <li><strong>Django Rest Framework (DRF)</strong>: I excel in designing and implementing **RESTful APIs**, ensuring they are efficient, secure, and well-structured for seamless integration with frontend applications.</li>
                         <li><strong>FastAPI</strong>: I also have experience with FastAPI, leveraging its high performance and modern asynchronous capabilities for building blazingly fast APIs.</li>
                     </ul>
                 </li>

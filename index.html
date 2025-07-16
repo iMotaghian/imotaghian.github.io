@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehrdad Motaghian - Django Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-right: 20px;
+            border-right: 1px solid #eee;
+        }
+        .main-content {
+            flex: 3;
+            min-width: 450px;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #007bff;
+            margin-top: 0;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            text-align: left;
+        }
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .download-cv {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        .download-cv a {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .download-cv a:hover {
+            background-color: #218838;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        ul li::before {
+            content: '•';
+            color: #007bff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-right: 0;
+                padding-bottom: 20px;
+                max-width: 100%;
+            }
+            .main-content {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="http://imehrdad.ir/m/103751835.jpg" alt="Mehrdad Motaghian" class="profile-img">
+            <h1>Mehrdad Motaghian</h1>
+            <p>Django Developer</p>
+
+            <div class="contact-info">
+                <a href="https://www.github.com/iMotaghian" target="_blank">GitHub: iMotaghian</a>
+                <a href="https://www.linkedin.com/in/motaghian" target="_blank">LinkedIn: motaghian</a>
+                <a href="mailto:motaghian@outlook.com">Email: motaghian@outlook.com</a>
+            </div>
+
+            <div class="download-cv">
+                <h3>Download My Resume</h3>
+                <a href="http://imehrdad.ir/m/mehrdad-motaghian-cv-fa.pdf" target="_blank">Farsi CV</a>
+                <a href="http://imehrdad.ir/m/mehrdad-motaghian-cv-en.pdf" target="_blank">English CV</a>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2>👋 Hi there!</h2>
+            <p>I'm a passionate and experienced **Django Developer** with a strong focus on building robust, scalable, and efficient web applications. With a solid foundation in Python and a deep understanding of the Django ecosystem, I thrive on crafting elegant solutions for complex problems.</p>
+            <p>I'm inherently **curious** and always eager to explore new technologies and learn new approaches. I see **challenges as opportunities** to grow and am deeply committed to **problem-solving**. My drive stems from a desire to build impactful software that is not only functional but also well-architected and maintainable.</p>
+
+            <h2>🛠️ My Tech Stack & Core Expertise</h2>
+            <ul>
+                <li><strong>Primary Language</strong>: Python</li>
+                <li><strong>Web Frameworks</strong>:
+                    <ul>
+                        <li><strong>Django</strong>: My core expertise lies in building comprehensive web applications.</li>
+                        <li><strong>Django Rest Framework (DRF)</strong>: I excel in designing and implementing **RESTful APIs**, ensuring they are efficient, secure, and well-structured for seamless integration with frontend applications.</li>
+                        <li><strong>FastAPI</strong>: I also have experience with FastAPI, leveraging its high performance and modern asynchronous capabilities for building blazingly fast APIs.</li>
+                    </ul>
+                </li>
+                <li><strong>API Design & Development</strong>: Proficient in creating well-documented, secure, and scalable RESTful APIs. I emphasize clear endpoint design, effective data serialization, and robust error handling.</li>
+                <li><strong>Databases</strong>: PostgreSQL (via `psycopg`), Redis</li>
+                <li><strong>API Documentation</strong>: `drf-yasg` (Swagger/Redoc)</li>
+                <li><strong>Authentication</strong>: JWT (`djangorestframework-simplejwt`), `djoser`</li>
+                <li><strong>Asynchronous Tasks & Caching</strong>: Celery, Redis – optimizing application performance by handling background processes and implementing caching strategies.</li>
+                <li><strong>Code Quality & Testing</strong>: Dedicated to writing clean, maintainable, and well-tested code. I utilize tools like Black and Flake8 for code standards and Pytest for comprehensive testing, including fixture design and test data generation with Faker.</li>
+                <li><strong>Deployment & DevOps</strong>: Experienced with containerization using **Docker** and **Docker Compose**, and deploying applications with **Gunicorn** and **Nginx**. I'm adept at setting up **Continuous Integration/Continuous Deployment (CI/CD)** pipelines using **GitHub Actions**, automating testing and deployment processes. I also have experience with load testing using Locust to ensure application resilience.</li>
+                <li><strong>Utilities & Libraries</strong>: `python-decouple`, `django-filter`, `Pillow` (image processing), `markdown`, `django-debug-toolbar`, `django-cors-headers`, `django-mail-templated`, `requests` (HTTP client).</li>
+            </ul>
+
+            <h2>🚀 What I Bring to a Team</h2>
+            <p>I am a proactive and enthusiastic developer who values collaboration and continuous improvement. My strong problem-solving skills, combined with a meticulous approach to coding, allow me to tackle complex technical challenges effectively. I'm always looking for ways to optimize processes, enhance performance, and contribute to a positive and productive development environment.</p>
+        </div>
+    </div>
+</body>
+</html>
